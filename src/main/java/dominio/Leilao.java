@@ -118,4 +118,12 @@ public class Leilao implements Serializable{
 			return false;
 		return true;
 	}
+	
+	public Usuario vencedor() {
+		return null;
+	}
+	
+	public Lance maiorLance() {
+		return null;
+	}
 }

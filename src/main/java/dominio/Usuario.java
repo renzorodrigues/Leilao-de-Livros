@@ -127,4 +127,9 @@ public class Usuario implements Serializable{
 			return false;
 		return true;
 	}
+	
+	public List<Leilao> leiloesQueVenceu() {
+		return null;
+		
+	}
 }
