@@ -26,6 +26,7 @@ public class Livro implements Serializable{
 		this.descricao = descricao;
 		this.edicao = edicao;
 		this.categoria = categoria;
+		categoria.addLivro(this);
 		this.leiloes = new ArrayList<>();
 	}
 

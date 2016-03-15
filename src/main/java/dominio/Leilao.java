@@ -28,6 +28,7 @@ public class Leilao implements Serializable{
 		this.valorMinimo = valorMinimo;
 		this.encerrado = encerrado;
 		this.livro = livro;
+		livro.addLeilao(this);
 		this.lances = new ArrayList<>();
 	}
 
