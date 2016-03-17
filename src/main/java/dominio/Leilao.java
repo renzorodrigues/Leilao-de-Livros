@@ -121,10 +121,20 @@ public class Leilao implements Serializable{
 	}
 	
 	public Usuario vencedor() {
-		return null;
+		return maiorLance().getUsuario();
 	}
 	
 	public Lance maiorLance() {
-		return null;
+				
+		Lance maior = new Lance();
+		BigDecimal aux = this.valorMinimo;
+		
+		for(Lance x : this.lances){
+			if(x.getValor().compareTo(aux) > 0){
+				aux = x.getValor();
+				maior = x;
+			}
+		}
+		return maior;
 	}
 }

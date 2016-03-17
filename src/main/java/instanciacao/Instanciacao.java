@@ -1,6 +1,7 @@
 package instanciacao;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -70,7 +71,12 @@ public class Instanciacao extends HttpServlet {
 			Lance lance19 = new Lance(null,new BigDecimal("20.00"),user2,leilao5);
 			Lance lance20 = new Lance(null,new BigDecimal("30.00"),user3,leilao5);
 						
-			response.getWriter().append("Pronto!");
+			
+			response.getWriter().println("O maior lance foi de R$"+leilao1.maiorLance().getValor());
+			response.getWriter().println("O vencedor do leilão foi "+leilao1.vencedor().getNome());
+			
+			response.getWriter().println(user1.leiloesQueVenceu());
+			
 			
 		} catch (ParseException e) {
 			response.getWriter().append("Erro ao instanciar data. Instância não criada.");

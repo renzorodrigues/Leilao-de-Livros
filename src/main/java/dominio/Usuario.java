@@ -4,7 +4,10 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+
+import org.omg.CORBA.VersionSpecHelper;
 
 public class Usuario implements Serializable{
 	private static final long serialVersionUID = 1L;
@@ -129,6 +132,14 @@ public class Usuario implements Serializable{
 	}
 	
 	public List<Leilao> leiloesQueVenceu() {
-		return null;
+
+		List<Leilao> lista = new ArrayList<>();
+		
+		for(int i = 0; i < getLances().size(); i++){
+			if(getLances().get(i).getLeilao().vencedor().getNome().equals(getNome())){
+				lista.add(getLances().get(i).getLeilao());
+			}
+		}			
+		return lista;
 	}
 }
