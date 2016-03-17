@@ -2,7 +2,7 @@ package dominio;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.sql.Date;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -130,6 +130,5 @@ public class Usuario implements Serializable{
 	
 	public List<Leilao> leiloesQueVenceu() {
 		return null;
-		
 	}
 }
