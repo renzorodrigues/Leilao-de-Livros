@@ -2,16 +2,24 @@ package dominio;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.Date;
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
-import org.omg.CORBA.VersionSpecHelper;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="tb_usuario")
 public class Usuario implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer codUsuario;
 	private String nome;
 	private String email;
@@ -19,6 +27,7 @@ public class Usuario implements Serializable{
 	private Date nascimento;
 	private BigDecimal renda;
 	
+	@OneToMany(mappedBy="usuario")
 	private List<Lance> lances;
 
 	public Usuario() {
@@ -136,7 +145,7 @@ public class Usuario implements Serializable{
 		List<Leilao> lista = new ArrayList<>();
 		
 		for(int i = 0; i < getLances().size(); i++){
-			if(getLances().get(i).getLeilao().vencedor().getNome().equals(getNome())){
+			if(getLances().get(i).getLeilao().vencedor().getCodUsuario().equals(getCodUsuario())){
 				lista.add(getLances().get(i).getLeilao());
 			}
 		}			

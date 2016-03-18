@@ -1,11 +1,13 @@
 package instanciacao;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -72,10 +74,57 @@ public class Instanciacao extends HttpServlet {
 			Lance lance20 = new Lance(null,new BigDecimal("30.00"),user3,leilao5);
 						
 			
-			response.getWriter().println("O maior lance foi de R$"+leilao1.maiorLance().getValor());
-			response.getWriter().println("O vencedor do leilão foi "+leilao1.vencedor().getNome());
+			EntityManagerFactory emf = Persistence.createEntityManagerFactory("meujpa");
+			EntityManager em = emf.createEntityManager();
 			
-			response.getWriter().println(user1.leiloesQueVenceu());
+			em.getTransaction().begin();
+			
+			em.persist(user1);
+			em.persist(user2);
+			em.persist(user3);
+			
+			em.persist(cat1);
+			em.persist(cat2);
+			
+			em.persist(livro1);
+			em.persist(livro2);
+			em.persist(livro3);
+			
+			em.persist(leilao1);
+			em.persist(leilao2);
+			em.persist(leilao3);
+			em.persist(leilao4);
+			em.persist(leilao5);
+			
+			em.persist(lance1);
+			em.persist(lance2);
+			em.persist(lance3);
+			em.persist(lance4);
+			em.persist(lance5);
+			em.persist(lance6);
+			em.persist(lance7);
+			em.persist(lance8);
+			em.persist(lance9);
+			em.persist(lance10);
+			em.persist(lance11);
+			em.persist(lance12);
+			em.persist(lance13);
+			em.persist(lance14);
+			em.persist(lance15);
+			em.persist(lance16);
+			em.persist(lance17);
+			em.persist(lance18);
+			em.persist(lance19);
+			em.persist(lance20);
+			
+			em.getTransaction().commit();
+			
+			em.close();
+			emf.close();
+			
+			response.getWriter().println("O vencedor do leilão foi "+leilao1.vencedor().getNome());
+			response.getWriter().println("O maior lance do leilão foi de R$"+leilao2.maiorLance().getValor());
+			response.getWriter().println("Leilões que o usuário "+user1.getNome()+" venceu: "+user1.leiloesQueVenceu());
 			
 			
 		} catch (ParseException e) {
