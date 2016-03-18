@@ -38,7 +38,7 @@ public class CategoriaDaoImpl implements CategoriaDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Categoria> buscarTodos() {
-		String jpql = "SELECT x FROM Participacao x";
+		String jpql = "SELECT x FROM Categoria x";
 		Query query = em.createNamedQuery(jpql);
 		return query.getResultList();
 	}
