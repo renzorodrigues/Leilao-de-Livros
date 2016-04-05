@@ -31,7 +31,7 @@ public class Instanciacao extends HttpServlet {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		
 				
-		try {
+		/*try {
 		
 			Usuario user1 = new Usuario(null,"Renzo","renzors@gmail.com","05015444613",sdf.parse("09/01/1981"),new BigDecimal("1500.00"));
 			Usuario user2 = new Usuario(null,"José","jose@gmail.com","03412055590",sdf.parse("19/10/1984"),new BigDecimal("1000.00"));
@@ -123,14 +123,29 @@ public class Instanciacao extends HttpServlet {
 			
 			response.getWriter().append("Pronto!");
 			
-			//response.getWriter().println("O vencedor do leilão foi "+leilao1.vencedor().getNome());
-			//response.getWriter().println("O maior lance do leilão foi de R$"+leilao2.maiorLance().getValor());
-			//response.getWriter().println("Leilões que o usuário "+user1.getNome()+" venceu: "+user1.leiloesQueVenceu());
+			
+			
+			response.getWriter().println("O vencedor do leilão foi "+leilao1.vencedor().getNome());
+			response.getWriter().println("O maior lance do leilão foi de R$"+leilao2.maiorLance().getValor());
+			response.getWriter().println("Leilões que o usuário "+user1.getNome()+" venceu: "+user1.leiloesQueVenceu());
 			
 			
 		} catch (ParseException e) {
 			response.getWriter().append("Erro ao instanciar data. Instância não criada.");
-		}
+		}*/
+		
+		CategoriaServico catS = new CategoriaServico();
+		LanceServico lanS = new LanceServico();
+		LeilaoServico leiS = new LeilaoServico();
+		LivroServico livS = new LivroServico();
+		UsuarioServico usuS = new UsuarioServico();
+		
+		Leilao x = leiS.buscar(4);
+		response.getWriter().println(x.vencedor());
+		
+		Usuario user = usuS.buscar(1);
+		response.getWriter().println(user.leiloesQueVenceu());
+		
 	}
 
 }
