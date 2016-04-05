@@ -5,9 +5,6 @@ import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,6 +16,11 @@ import dominio.Lance;
 import dominio.Leilao;
 import dominio.Livro;
 import dominio.Usuario;
+import servico.CategoriaServico;
+import servico.LanceServico;
+import servico.LeilaoServico;
+import servico.LivroServico;
+import servico.UsuarioServico;
 
 @WebServlet("/Instanciacao")
 public class Instanciacao extends HttpServlet {
@@ -72,59 +74,58 @@ public class Instanciacao extends HttpServlet {
 			Lance lance18 = new Lance(null,new BigDecimal("15.00"),user1,leilao5);
 			Lance lance19 = new Lance(null,new BigDecimal("20.00"),user2,leilao5);
 			Lance lance20 = new Lance(null,new BigDecimal("30.00"),user3,leilao5);
-						
 			
-			EntityManagerFactory emf = Persistence.createEntityManagerFactory("meujpa");
-			EntityManager em = emf.createEntityManager();
 			
-			em.getTransaction().begin();
+			CategoriaServico catS = new CategoriaServico();
+			LanceServico lanS = new LanceServico();
+			LeilaoServico leiS = new LeilaoServico();
+			LivroServico livS = new LivroServico();
+			UsuarioServico usuS = new UsuarioServico();
+								
 			
-			em.persist(user1);
-			em.persist(user2);
-			em.persist(user3);
+			usuS.inserirAtualizar(user1);
+			usuS.inserirAtualizar(user2);
+			usuS.inserirAtualizar(user3);
 			
-			em.persist(cat1);
-			em.persist(cat2);
+			catS.inserirAtualizar(cat1);
+			catS.inserirAtualizar(cat2);
+
+			livS.inserirAtualizar(livro1);
+			livS.inserirAtualizar(livro2);
+			livS.inserirAtualizar(livro3);
 			
-			em.persist(livro1);
-			em.persist(livro2);
-			em.persist(livro3);
+			leiS.inserirAtualizar(leilao1);
+			leiS.inserirAtualizar(leilao2);
+			leiS.inserirAtualizar(leilao3);
+			leiS.inserirAtualizar(leilao4);
+			leiS.inserirAtualizar(leilao5);
 			
-			em.persist(leilao1);
-			em.persist(leilao2);
-			em.persist(leilao3);
-			em.persist(leilao4);
-			em.persist(leilao5);
+			lanS.inserirAtualizar(lance1);
+			lanS.inserirAtualizar(lance2);
+			lanS.inserirAtualizar(lance3);
+			lanS.inserirAtualizar(lance4);
+			lanS.inserirAtualizar(lance5);
+			lanS.inserirAtualizar(lance6);
+			lanS.inserirAtualizar(lance7);
+			lanS.inserirAtualizar(lance8);
+			lanS.inserirAtualizar(lance9);
+			lanS.inserirAtualizar(lance10);
+			lanS.inserirAtualizar(lance11);
+			lanS.inserirAtualizar(lance12);
+			lanS.inserirAtualizar(lance13);
+			lanS.inserirAtualizar(lance14);
+			lanS.inserirAtualizar(lance15);
+			lanS.inserirAtualizar(lance16);
+			lanS.inserirAtualizar(lance17);
+			lanS.inserirAtualizar(lance18);
+			lanS.inserirAtualizar(lance19);
+			lanS.inserirAtualizar(lance20);
 			
-			em.persist(lance1);
-			em.persist(lance2);
-			em.persist(lance3);
-			em.persist(lance4);
-			em.persist(lance5);
-			em.persist(lance6);
-			em.persist(lance7);
-			em.persist(lance8);
-			em.persist(lance9);
-			em.persist(lance10);
-			em.persist(lance11);
-			em.persist(lance12);
-			em.persist(lance13);
-			em.persist(lance14);
-			em.persist(lance15);
-			em.persist(lance16);
-			em.persist(lance17);
-			em.persist(lance18);
-			em.persist(lance19);
-			em.persist(lance20);
+			response.getWriter().append("Pronto!");
 			
-			em.getTransaction().commit();
-			
-			em.close();
-			emf.close();
-			
-			response.getWriter().println("O vencedor do leilão foi "+leilao1.vencedor().getNome());
-			response.getWriter().println("O maior lance do leilão foi de R$"+leilao2.maiorLance().getValor());
-			response.getWriter().println("Leilões que o usuário "+user1.getNome()+" venceu: "+user1.leiloesQueVenceu());
+			//response.getWriter().println("O vencedor do leilão foi "+leilao1.vencedor().getNome());
+			//response.getWriter().println("O maior lance do leilão foi de R$"+leilao2.maiorLance().getValor());
+			//response.getWriter().println("Leilões que o usuário "+user1.getNome()+" venceu: "+user1.leiloesQueVenceu());
 			
 			
 		} catch (ParseException e) {
