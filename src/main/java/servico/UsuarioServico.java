@@ -2,9 +2,9 @@ package servico;
 
 import java.util.List;
 
-import dao.UsuarioDao;
 import dao.DaoFactory;
-import dao.impl.EM;
+import dao.Transaction;
+import dao.UsuarioDao;
 import dominio.Usuario;
 
 public class UsuarioServico {
@@ -16,15 +16,31 @@ public class UsuarioServico {
 	}
 	
 	public void inserirAtualizar(Usuario x) {
-		EM.getLocalEm().getTransaction().begin();
-		dao.inserirAtualizar(x);
-		EM.getLocalEm().getTransaction().commit();
+		try{
+			Transaction.begin();
+			dao.inserirAtualizar(x);
+			Transaction.commit();
+		}
+		catch(RuntimeException e){
+			if(Transaction.isActive()){
+				Transaction.rollback();
+			}
+			System.out.println("Erro: " + e.getMessage());
+		}
 	}
 	
 	public void excluir(Usuario x) {
-		EM.getLocalEm().getTransaction().begin();
-		dao.excluir(x);
-		EM.getLocalEm().getTransaction().commit();
+		try{
+			Transaction.begin();
+			dao.excluir(x);
+			Transaction.commit();
+		}
+		catch(RuntimeException e){
+			if(Transaction.isActive()){
+				Transaction.rollback();
+			}
+			System.out.println("Erro: " + e.getMessage());
+		}
 	}
 	
 	public Usuario buscar(int cod) {

@@ -4,7 +4,7 @@ import java.util.List;
 
 import dao.CategoriaDao;
 import dao.DaoFactory;
-import dao.impl.EM;
+import dao.Transaction;
 import dominio.Categoria;
 
 public class CategoriaServico {
@@ -16,15 +16,31 @@ public class CategoriaServico {
 	}
 	
 	public void inserirAtualizar(Categoria x) {
-		EM.getLocalEm().getTransaction().begin();
-		dao.inserirAtualizar(x);
-		EM.getLocalEm().getTransaction().commit();
+		try{
+			Transaction.begin();
+			dao.inserirAtualizar(x);
+			Transaction.commit();
+		}
+		catch(RuntimeException e){
+			if(Transaction.isActive()){
+				Transaction.rollback();
+			}
+			System.out.println("Erro: " + e.getMessage());
+		}
 	}
 	
 	public void excluir(Categoria x) {
-		EM.getLocalEm().getTransaction().begin();
-		dao.excluir(x);
-		EM.getLocalEm().getTransaction().commit();
+		try{
+			Transaction.begin();
+			dao.excluir(x);
+			Transaction.commit();
+		}
+		catch(RuntimeException e){
+			if(Transaction.isActive()){
+				Transaction.rollback();
+			}
+			System.out.println("Erro: " + e.getMessage());
+		}
 	}
 	
 	public Categoria buscar(int cod) {
