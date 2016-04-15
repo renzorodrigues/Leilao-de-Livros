@@ -39,8 +39,18 @@ public class LivroDaoImpl implements LivroDao {
 	@Override
 	public List<Livro> buscarTodos() {
 		String jpql = "SELECT x FROM Livro x";
-		Query query = em.createNamedQuery(jpql);
+		Query query = em.createQuery(jpql);
 		return query.getResultList();
 	}
-
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Livro> buscarPorTituloEdicao(String titulo, int edicaoMin, int edicaoMax){
+		String jpql = "SELECT x FROM Livro x WHERE x.titulo LIKE :p1 AND x.edicao >= :p2 AND x.edicao <= :p3";
+		Query query = em.createNamedQuery(jpql);
+		query.setParameter("p1", "%"+titulo+"%");
+		query.setParameter("p2", edicaoMin);
+		query.setParameter("p3", edicaoMax);		
+		return query.getResultList();
+	}
 }

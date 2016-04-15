@@ -38,9 +38,40 @@ public class UsuarioDaoImpl implements UsuarioDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Usuario> buscarTodos() {
-		String jpql = "SELECT x FROM Usuario x";
-		Query query = em.createNamedQuery(jpql);
+		String jpql = "SELECT x FROM Usuario x ORDER BY x.nome";
+		Query query = em.createQuery(jpql);
 		return query.getResultList();
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public Usuario buscaNomeExato(String nome){
+		String jpql = "SELECT x FROM Usuario x WHERE x.nome = :p1";
+		Query query = em.createQuery(jpql);
+		query.setParameter("p1", nome);
+		List<Usuario> aux = query.getResultList();
+		return (aux.size() > 0) ? aux.get(0) : null;
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public Usuario buscaNomeExatoDiferente(Integer codigo, String nome){
+		String jpql = "SELECT x FROM Usuario x WHERE x.codArtista <> :p0 AND x.nome = :p1";
+		Query query = em.createQuery(jpql);
+		query.setParameter("p1", nome);
+		query.setParameter("p0", nome);
+		List<Usuario> aux = query.getResultList();
+		return (aux.size() > 0) ? aux.get(0) : null;
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Usuario> buscarPorNome(String trecho){
+		String jpql = "SELECT x FROM Usuario x WHERE x.nome LIKE :p1";
+		Query query = em.createQuery(jpql);
+		query.setParameter("p1", "%"+trecho+"%");
+		return query.getResultList();
+		
 	}
 
 }

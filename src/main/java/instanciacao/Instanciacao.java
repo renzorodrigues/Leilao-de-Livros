@@ -20,6 +20,7 @@ import servico.CategoriaServico;
 import servico.LanceServico;
 import servico.LeilaoServico;
 import servico.LivroServico;
+import servico.ServicoException;
 import servico.UsuarioServico;
 
 @WebServlet("/Instanciacao")
@@ -30,10 +31,15 @@ public class Instanciacao extends HttpServlet {
 
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		
+		CategoriaServico catS = new CategoriaServico();
+		LanceServico lanS = new LanceServico();
+		LeilaoServico leiS = new LeilaoServico();
+		LivroServico livS = new LivroServico();
+		UsuarioServico usuS = new UsuarioServico();
 				
-		/*try {
+		try {
 		
-			Usuario user1 = new Usuario(null,"Renzo","renzors@gmail.com","05015444613",sdf.parse("09/01/1981"),new BigDecimal("1500.00"));
+			/*Usuario user1 = new Usuario(null,"Renzo","renzors@gmail.com","05015444613",sdf.parse("09/01/1981"),new BigDecimal("1500.00"));
 			Usuario user2 = new Usuario(null,"José","jose@gmail.com","03412055590",sdf.parse("19/10/1984"),new BigDecimal("1000.00"));
 			Usuario user3 = new Usuario(null,"Ana","ana@yahoo.com","08032166740",sdf.parse("12/05/1983"),new BigDecimal("2000.00"));
 			
@@ -75,17 +81,9 @@ public class Instanciacao extends HttpServlet {
 			Lance lance19 = new Lance(null,new BigDecimal("20.00"),user2,leilao5);
 			Lance lance20 = new Lance(null,new BigDecimal("30.00"),user3,leilao5);
 			
-			
-			CategoriaServico catS = new CategoriaServico();
-			LanceServico lanS = new LanceServico();
-			LeilaoServico leiS = new LeilaoServico();
-			LivroServico livS = new LivroServico();
-			UsuarioServico usuS = new UsuarioServico();
-								
-			
-			usuS.inserirAtualizar(user1);
-			usuS.inserirAtualizar(user2);
-			usuS.inserirAtualizar(user3);
+			usuS.inserir(user1);
+			usuS.inserir(user2);
+			usuS.inserir(user3);
 			
 			catS.inserirAtualizar(cat1);
 			catS.inserirAtualizar(cat2);
@@ -100,26 +98,26 @@ public class Instanciacao extends HttpServlet {
 			leiS.inserirAtualizar(leilao4);
 			leiS.inserirAtualizar(leilao5);
 			
-			lanS.inserirAtualizar(lance1);
-			lanS.inserirAtualizar(lance2);
-			lanS.inserirAtualizar(lance3);
-			lanS.inserirAtualizar(lance4);
-			lanS.inserirAtualizar(lance5);
-			lanS.inserirAtualizar(lance6);
-			lanS.inserirAtualizar(lance7);
-			lanS.inserirAtualizar(lance8);
-			lanS.inserirAtualizar(lance9);
-			lanS.inserirAtualizar(lance10);
-			lanS.inserirAtualizar(lance11);
-			lanS.inserirAtualizar(lance12);
-			lanS.inserirAtualizar(lance13);
-			lanS.inserirAtualizar(lance14);
-			lanS.inserirAtualizar(lance15);
-			lanS.inserirAtualizar(lance16);
-			lanS.inserirAtualizar(lance17);
-			lanS.inserirAtualizar(lance18);
-			lanS.inserirAtualizar(lance19);
-			lanS.inserirAtualizar(lance20);
+			lanS.inserir(lance1);
+			lanS.inserir(lance2);
+			lanS.inserir(lance3);
+			lanS.inserir(lance4);
+			lanS.inserir(lance5);
+			lanS.inserir(lance6);
+			lanS.inserir(lance7);
+			lanS.inserir(lance8);
+			lanS.inserir(lance9);
+			lanS.inserir(lance10);
+			lanS.inserir(lance11);
+			lanS.inserir(lance12);
+			lanS.inserir(lance13);
+			lanS.inserir(lance14);
+			lanS.inserir(lance15);
+			lanS.inserir(lance16);
+			lanS.inserir(lance17);
+			lanS.inserir(lance18);
+			lanS.inserir(lance19);
+			lanS.inserir(lance20);
 			
 			response.getWriter().append("Pronto!");
 			
@@ -127,14 +125,25 @@ public class Instanciacao extends HttpServlet {
 			
 			response.getWriter().println("O vencedor do leilão foi "+leilao1.vencedor().getNome());
 			response.getWriter().println("O maior lance do leilão foi de R$"+leilao2.maiorLance().getValor());
-			response.getWriter().println("Leilões que o usuário "+user1.getNome()+" venceu: "+user1.leiloesQueVenceu());
+			response.getWriter().println("Leilões que o usuário "+user1.getNome()+" venceu: "+user1.leiloesQueVenceu());*/
+			
+			Usuario user4 = new Usuario(null,"Gabriel","gabriel@yahoo.com","04023454320",sdf.parse("23/06/1985"),new BigDecimal("4000.00"));
+			Categoria cat1 = new Categoria(null,"Romance");
+			Livro livro1 = new Livro(null,"Guerra e Paz","Um clássico russo",3,cat1);
+			Leilao leilao2 = new Leilao(null,sdf.parse("09/03/2016"),new BigDecimal("15.00"),true,livro1);
+			Lance lance21 = new Lance(null,new BigDecimal("20.00"),user4,leilao2);
+			lanS.inserir(lance21);
 			
 			
-		} catch (ParseException e) {
+		} 
+		catch (ParseException e) {
 			response.getWriter().append("Erro ao instanciar data. Instância não criada.");
-		}*/
+		} 
+		catch (ServicoException e){
+			response.getWriter().append("Erro! " + e.getMessage());
+		}
 		
-		CategoriaServico catS = new CategoriaServico();
+		/*CategoriaServico catS = new CategoriaServico();
 		LanceServico lanS = new LanceServico();
 		LeilaoServico leiS = new LeilaoServico();
 		LivroServico livS = new LivroServico();
@@ -144,7 +153,7 @@ public class Instanciacao extends HttpServlet {
 		response.getWriter().println(x.vencedor());
 		
 		Usuario user = usuS.buscar(1);
-		response.getWriter().println(user.leiloesQueVenceu());
+		response.getWriter().println(user.leiloesQueVenceu());*/
 		
 	}
 

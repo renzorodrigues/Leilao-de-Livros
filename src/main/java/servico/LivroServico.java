@@ -50,4 +50,8 @@ public class LivroServico {
 	public List<Livro> buscarTodos() {
 		return dao.buscarTodos();
 	}
+	
+	public List<Livro> buscarPorTituloEdicao(String titulo, int edicaoMin, int edicaoMax){
+		return dao.buscarPorTituloEdicao(titulo, edicaoMin, edicaoMax);		
+	}
 }

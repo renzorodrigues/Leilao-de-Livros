@@ -39,7 +39,7 @@ public class LeilaoDaoImpl implements LeilaoDao {
 	@Override
 	public List<Leilao> buscarTodos() {
 		String jpql = "SELECT x FROM Leilao x";
-		Query query = em.createNamedQuery(jpql);
+		Query query = em.createQuery(jpql);
 		return query.getResultList();
 	}
 

@@ -39,7 +39,7 @@ public class CategoriaDaoImpl implements CategoriaDao {
 	@Override
 	public List<Categoria> buscarTodos() {
 		String jpql = "SELECT x FROM Categoria x";
-		Query query = em.createNamedQuery(jpql);
+		Query query = em.createQuery(jpql);
 		return query.getResultList();
 	}
 

@@ -1,7 +1,6 @@
 package servico;
 
 import java.util.List;
-
 import dao.DaoFactory;
 import dao.LanceDao;
 import dao.Transaction;
@@ -15,7 +14,26 @@ public class LanceServico {
 		dao = DaoFactory.criarLanceDao();
 	}
 	
-	public void inserirAtualizar(Lance x) {
+	public void inserir(Lance x) throws ServicoException {
+		try{
+			Lance aux = dao.verificaValor(x.getValor());
+			if(x.getValor().compareTo(aux.getValor()) < 0){
+				throw new ServicoException("Já existe um valor maior registrado para este leilão!", 1);
+			}
+			
+			Transaction.begin();
+			dao.inserirAtualizar(x);
+			Transaction.commit();
+		}
+		catch(RuntimeException e){
+			if(Transaction.isActive()){
+				Transaction.rollback();
+			}
+			System.out.println("Erro: " + e.getMessage());
+		}
+	}
+	
+	public void atualizar(Lance x) {
 		try{
 			Transaction.begin();
 			dao.inserirAtualizar(x);
