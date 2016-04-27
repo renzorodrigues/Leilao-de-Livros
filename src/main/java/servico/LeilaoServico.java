@@ -6,6 +6,7 @@ import dao.DaoFactory;
 import dao.LeilaoDao;
 import dao.Transaction;
 import dominio.Leilao;
+import dominio.Livro;
 
 public class LeilaoServico {
 
@@ -49,5 +50,9 @@ public class LeilaoServico {
 	
 	public List<Leilao> buscarTodos() {
 		return dao.buscarTodos();
+	}
+	
+	public List<Leilao> buscarLeiloesNaoEncerrados(Livro x){
+		return dao.buscarLeiloesNaoEncerrados(x);
 	}
 }

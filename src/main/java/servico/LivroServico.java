@@ -52,6 +52,6 @@ public class LivroServico {
 	}
 	
 	public List<Livro> buscarPorTituloEdicao(String titulo, int edicaoMin, int edicaoMax){
-		return dao.buscarPorTituloEdicao(titulo, edicaoMin, edicaoMax);		
+		return dao.buscarPorTituloEdicao(titulo, edicaoMin, edicaoMax);
 	}
 }

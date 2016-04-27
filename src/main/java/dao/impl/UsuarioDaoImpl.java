@@ -56,10 +56,10 @@ public class UsuarioDaoImpl implements UsuarioDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public Usuario buscaNomeExatoDiferente(Integer codigo, String nome){
-		String jpql = "SELECT x FROM Usuario x WHERE x.codArtista <> :p0 AND x.nome = :p1";
+		String jpql = "SELECT x FROM Usuario x WHERE x.codUsuario <> :p0 AND x.nome = :p1";
 		Query query = em.createQuery(jpql);
 		query.setParameter("p1", nome);
-		query.setParameter("p0", nome);
+		query.setParameter("p0", codigo);
 		List<Usuario> aux = query.getResultList();
 		return (aux.size() > 0) ? aux.get(0) : null;
 	}

@@ -1,6 +1,5 @@
 package dao;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 import dominio.Lance;
@@ -12,5 +11,4 @@ public interface LanceDao {
 	public Lance buscar(int cod);
 	public List<Lance> buscarTodos();
 	
-	public Lance verificaValor(BigDecimal valor);
 }

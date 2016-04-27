@@ -1,6 +1,5 @@
 package dao.impl;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -42,15 +41,5 @@ public class LanceDaoImpl implements LanceDao {
 		String jpql = "SELECT x FROM Lance x";
 		Query query = em.createQuery(jpql);
 		return query.getResultList();
-	}
-
-	@SuppressWarnings("unchecked")
-	@Override
-	public Lance verificaValor(BigDecimal valor) {
-		String jpql = "SELECT x FROM Lance x WHERE x.valor = :p1";
-		Query query = em.createQuery(jpql);
-		query.setParameter("p1", valor);
-		List<Lance> aux = query.getResultList();
-		return (aux.size() > 0) ? aux.get(0) : null;
 	}
 }

@@ -7,6 +7,7 @@ import javax.persistence.Query;
 
 import dao.LeilaoDao;
 import dominio.Leilao;
+import dominio.Livro;
 
 public class LeilaoDaoImpl implements LeilaoDao {
 
@@ -40,6 +41,16 @@ public class LeilaoDaoImpl implements LeilaoDao {
 	public List<Leilao> buscarTodos() {
 		String jpql = "SELECT x FROM Leilao x";
 		Query query = em.createQuery(jpql);
+		return query.getResultList();
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Leilao> buscarLeiloesNaoEncerrados(Livro livro) {
+		String jpql = "SELECT x FROM Leilao x WHERE x.encerrado = :p1 AND x.livro = :p2";
+		Query query = em.createQuery(jpql);
+		query.setParameter("p1", false);
+		query.setParameter("p2", livro);
 		return query.getResultList();
 	}
 

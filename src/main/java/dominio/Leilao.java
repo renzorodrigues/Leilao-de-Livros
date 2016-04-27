@@ -141,13 +141,15 @@ public class Leilao implements Serializable{
 	}
 	
 	public Lance maiorLance() {
+		
+		if(this.lances.isEmpty()){
+			return null;
+		}
 				
-		Lance maior = new Lance();
-		BigDecimal aux = this.valorMinimo;
+		Lance maior = this.lances.get(0);
 		
 		for(Lance x : this.lances){
-			if(x.getValor().compareTo(aux) > 0){
-				aux = x.getValor();
+			if(x.getValor().compareTo(maior.getValor()) > 0){
 				maior = x;
 			}
 		}
