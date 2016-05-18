@@ -24,13 +24,14 @@ public class LanceServico {
 			Leilao le = leilaoDao.buscar(x.getLeilao().getCodLeilao());
 			
 			if(le.getLances().isEmpty()){
+				System.out.println("Primeiro lance: " + x.getValor());
 				if(le.getValorMinimo().compareTo(x.getValor()) > 0){
 					throw new ServicoException("O valor do lance é menor que o valor mínimo do leilão", 1);
 				}
 			}			
 			else {
 				Lance aux = le.maiorLance();
-				System.out.println(x.getValor()+", "+aux.getValor());
+				System.out.println("Lance inserido: "+x.getValor()+", O maior era: "+aux.getValor());
 				if(x.getValor().compareTo(aux.getValor()) < 0){
 					throw new ServicoException("Já existe um valor maior registrado para este leilão!", 1);
 				}
@@ -39,6 +40,7 @@ public class LanceServico {
 			Transaction.begin();
 			dao.inserirAtualizar(x);
 			Transaction.commit();
+			le.addLance(x); // retiramos a chamada de addLance do construtor e colocamos aqui
 		}
 		catch(RuntimeException e){
 			if(Transaction.isActive()){

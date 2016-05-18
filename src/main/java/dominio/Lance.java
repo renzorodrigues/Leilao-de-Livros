@@ -38,7 +38,7 @@ public class Lance implements Serializable{
 		this.usuario = usuario;
 		usuario.addLance(this);
 		this.leilao = leilao;
-		leilao.addLance(this);
+		//leilao.addLance(this);
 	}
 
 	public Integer getCodLance() {

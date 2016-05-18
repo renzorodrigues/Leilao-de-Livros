@@ -121,11 +121,11 @@ public class Instanciacao extends HttpServlet {
 			
 			response.getWriter().append("Pronto!");
 			
-			
-			
+			/*
 			response.getWriter().println("O vencedor do leilão foi "+leilao1.vencedor().getNome());
 			response.getWriter().println("O maior lance do leilão foi de R$"+leilao2.maiorLance().getValor());
 			response.getWriter().println("Leilões que o usuário "+user1.getNome()+" venceu: "+user1.leiloesQueVenceu());
+			*/
 			
 			/*Usuario user4 = new Usuario(null,"Gabriel","gabriel@yahoo.com","04023454320",sdf.parse("23/06/1985"),new BigDecimal("4000.00"));
 			Categoria cat1Teste = new Categoria(null,"Romance");
