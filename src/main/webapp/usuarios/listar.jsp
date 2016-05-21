@@ -62,8 +62,8 @@
 						<td>${x.nome}</td>
 						<td>${x.email}</td>
 						<td>${x.cpf}</td>
-						<td>${x.nascimento}</td>
-						<td>${x.renda}</td>
+						<td><fmt:formatDate type="date" pattern="dd/MM/yyyy" value="${x.nascimento}" /></td>
+						<td><fmt:setLocale value="pt_BR" /><fmt:formatNumber type="currency" value="${x.renda}" /></td>
 						<td><a href="<%=request.getContextPath()%>/usuarios/editar?cod=${x.codUsuario}" class="btn btn-primary btn-xs">Editar</a>
 							<a href="<%=request.getContextPath()%>/usuarios/excluir?cod=${x.codUsuario}" class="btn btn-danger btn-xs">Excluir</a>
 						</td>
