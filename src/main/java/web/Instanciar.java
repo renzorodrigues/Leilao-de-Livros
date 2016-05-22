@@ -17,7 +17,12 @@ public class Instanciar {
 		
 		str = request.getParameter("codUsuario");
 		if(str != null && !str.isEmpty()){
-			aux.setCodUsuario(Integer.parseInt(str));
+			try {
+				aux.setCodUsuario(Integer.parseInt(str));
+			}
+			catch (NumberFormatException e){
+				e.printStackTrace();
+			}
 		}
 		
 		str = request.getParameter("nome");
@@ -47,7 +52,12 @@ public class Instanciar {
 		
 		str = request.getParameter("renda");
 		if(str != null && !str.isEmpty()){
-			aux.setRenda(new BigDecimal(str));
+			try {
+				aux.setRenda(new BigDecimal(str));
+			}
+			catch (NumberFormatException e){
+				e.printStackTrace();
+			}
 		}
 		
 		return aux;

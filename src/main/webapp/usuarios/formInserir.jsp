@@ -1,11 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Leil√£o de Filmes</title>
+<meta charset="ISO-8859-1">
+<title>Leil„o de Filmes</title>
 
 <!-- Bootstrap core CSS -->
 <link
@@ -24,10 +24,21 @@
 	<!-- Begin page content -->
 	<div class="container">
 		<div class="page-header">
-			<h1>Inserir novo Usu√°rio</h1>
+			<h1>Inserir novo Usu·rio</h1>
 		</div>
 		
-		<form name="myForm" class="form-horizontal" action="<%=request.getContextPath()%>/usuarios/inserir">
+		<form name="myForm" method="post" class="form-horizontal" action="<%=request.getContextPath()%>/usuarios/inserir">
+		
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+					<ul>
+						<c:forEach items="${erros}" var="msg">
+							<li>${msg}</li>
+						</c:forEach>
+					</ul>
+				</div>
+			</div>
+		
 			<div class="form-group">
 				<label class="col-sm-2 control-label" for="nome">Nome:</label>
 				<div class="col-sm-5">
@@ -49,7 +60,7 @@
 			<div class="form-group">
 				<label class="col-sm-2 control-label" for="nascimento">Data de Nascimento:</label>
 				<div class="col-sm-5">
-					<input type="text" name="nascimento" id="nascimento" value="<fmt:formatDate pattern="dd/MM/yyyy" value="${item.nascimento}" />" required="required" class="form-control" />
+					<input type="text" name="nascimento" id="nascimento" value="<fmt:formatDate pattern="dd/MM/yyyy" value="${item.nascimento}" />" required="required" class="form-control"/>
 				</div>
 			</div>
 			<div class="form-group">

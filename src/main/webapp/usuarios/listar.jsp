@@ -1,11 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Listar Usu√°rios</title>
+<meta charset="ISO-8859-1">
+<title>Listar Usu·rios</title>
 
 <!-- Bootstrap core CSS -->
 <link
@@ -24,7 +24,7 @@
 	<!-- Begin page content -->
 	<div class="container">
 		<div class="page-header">
-			<h1>Usu√°rios</h1>
+			<h1>Usu·rios</h1>
 		</div>
 		
 		<div class="row">
@@ -46,13 +46,13 @@
 		<table class="table">
 			<thead>
 				<tr>
-					<th>C√≥digo</th>
+					<th>CÛdigo</th>
 					<th>Nome</th>
 					<th>E-mail</th>
 					<th>CPF</th>
 					<th>Data Nascimento</th>
 					<th>Renda</th>
-					<th>A√ß√£o</th>
+					<th>AÁ„o</th>
 				</tr>
 			</thead>
 			<tbody>
