@@ -14,12 +14,12 @@ import servico.ServicoException;
 import servico.UsuarioServico;
 import servico.ValidacaoException;
 
-@WebServlet("/usuarios/inserir")
-public class UsuarioInserir extends HttpServlet {
+@WebServlet("/usuarios/atualizar")
+public class UsuarioAtualizar extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private static String DESTINO = "/usuarios/listar.jsp";
-	private static String FORM = "/usuarios/formInserir.jsp";
+	private static String FORM = "/usuarios/formEditar.jsp";
 	private static String ERRO = "/publico/erro.jsp";
 	
 
@@ -29,7 +29,7 @@ public class UsuarioInserir extends HttpServlet {
 		Usuario x = Instanciar.usuario(request);
 		try {
 			uS.validar(x);
-			uS.inserir(x);
+			uS.atualizar(x);
 			List<Usuario> itens = uS.buscarTodos();
 			
 			request.setAttribute("itens", itens);

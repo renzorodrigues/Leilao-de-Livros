@@ -1,7 +1,7 @@
 package instanciacao;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
+//import java.text.SimpleDateFormat;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,12 +9,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dominio.Leilao;
+/*import dominio.Leilao;
 import servico.CategoriaServico;
 import servico.LanceServico;
 import servico.LeilaoServico;
 import servico.LivroServico;
-import servico.UsuarioServico;
+import servico.UsuarioServico;*/
 
 @WebServlet("/Testes")
 public class Testes extends HttpServlet {
@@ -22,7 +22,7 @@ public class Testes extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		/*SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		
 		CategoriaServico catS = new CategoriaServico();
 		LanceServico lanS = new LanceServico();
@@ -41,7 +41,7 @@ public class Testes extends HttpServlet {
 		}
 		
 		
-		/*CategoriaServico catS = new CategoriaServico();
+		CategoriaServico catS = new CategoriaServico();
 		LanceServico lanS = new LanceServico();
 		LeilaoServico leiS = new LeilaoServico();
 		LivroServico livS = new LivroServico();
