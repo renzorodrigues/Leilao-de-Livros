@@ -30,7 +30,7 @@ public class LanceServico {
 				}
 			}			
 			else {
-				Lance aux = le.maiorLance();
+				Lance aux = le.getMaiorLance();
 				System.out.println("Lance inserido: "+x.getValor()+", O maior era: "+aux.getValor());
 				if(x.getValor().compareTo(aux.getValor()) < 0){
 					throw new ServicoException("Já existe um valor maior registrado para este leilão!", 1);

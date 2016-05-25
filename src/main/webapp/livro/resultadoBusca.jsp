@@ -24,10 +24,29 @@
 	<!-- Begin page content -->
 	<div class="container">
 		<div class="page-header">
-			<h1>Título da Página</h1>
+			<h1>Resultado(s) da Pesquisa</h1>
 		</div>
-		<p class="lead">Texto Grande</p>
-		<p>Texto Menor</p>
+		
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Código</th>
+					<th>Título</th>
+					<th>Edição</th>
+					<th>Ação</th>
+					</tr>
+			</thead>
+			<tbody>
+				<c:forEach items="${itens}" var="x">
+					<tr>
+						<td>${x.codLivro}</td>
+						<td>${x.titulo}</td>
+						<td>${x.edicao}</td>
+						<td><a href="<%=request.getContextPath()%>/livro/detalhes?cod=${x.codLivro}" class="btn btn-primary btn-xs">Detalhes</a></td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
 	</div>
 
 	<jsp:include page="/resources/templates/footer.jsp" />
@@ -37,5 +56,7 @@
 		src="<%=request.getContextPath()%>/resources/js/jquery-1.12.3.min.js"></script>
 	<script
 		src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/resources/js/funcoes.js"></script>
 </body>
 </html>

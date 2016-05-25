@@ -45,10 +45,10 @@ public class LivroDaoImpl implements LivroDao {
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Livro> buscarPorTituloEdicao(String titulo, int edicaoMin, int edicaoMax){
-		String jpql = "SELECT x FROM Livro x WHERE x.titulo LIKE :p1 AND x.edicao >= :p2 AND x.edicao <= :p3";
+	public List<Livro> buscarPorTituloEdicao(String nome, int edicaoMin, int edicaoMax){
+		String jpql = "SELECT x FROM Livro x WHERE x.titulo LIKE :p1 AND x.edicao >= :p2 AND x.edicao <= :p3 ORDER BY x.titulo";
 		Query query = em.createNamedQuery(jpql);
-		query.setParameter("p1", "%"+titulo+"%");
+		query.setParameter("p1", "%"+nome+"%");
 		query.setParameter("p2", edicaoMin);
 		query.setParameter("p3", edicaoMax);		
 		return query.getResultList();

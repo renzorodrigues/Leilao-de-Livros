@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Leilão de Filmes</title>
+<title>Leilão de Livros</title>
 
 <!-- Bootstrap core CSS -->
 <link
@@ -66,7 +66,7 @@
 			<div class="form-group">
 				<label class="col-sm-2 control-label" for="renda">Renda:</label>
 				<div class="col-sm-5">
-					<input type="text" name="renda" id="renda" value="${item.renda}" required="required" class="form-control" id="campoData" />
+					<input type="text" name="renda" id="renda" value="${item.renda}" required="required" class="form-control" />
 				</div>
 			</div>
 			<div class="form-group">

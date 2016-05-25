@@ -145,7 +145,7 @@ public class Usuario implements Serializable{
 		List<Leilao> lista = new ArrayList<>();
 		
 		for(int i = 0; i < getLances().size(); i++){
-			if(getLances().get(i).getLeilao().vencedor().getCodUsuario().equals(getCodUsuario())){
+			if(getLances().get(i).getLeilao().getVencedor().getCodUsuario().equals(getCodUsuario())){
 				if (!lista.contains(getLances().get(i).getLeilao())) {
 					lista.add(getLances().get(i).getLeilao());
 				}					

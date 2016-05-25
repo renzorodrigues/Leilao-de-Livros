@@ -136,11 +136,11 @@ public class Leilao implements Serializable{
 		return true;
 	}
 	
-	public Usuario vencedor() {
-		return maiorLance().getUsuario();
+	public Usuario getVencedor() {
+		return getMaiorLance().getUsuario();
 	}
 	
-	public Lance maiorLance() {
+	public Lance getMaiorLance() {
 		
 		if(this.lances.isEmpty()){
 			return null;

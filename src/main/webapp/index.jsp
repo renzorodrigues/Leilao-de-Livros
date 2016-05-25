@@ -5,7 +5,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Leilão de Filmes</title>
+    <title>Leilão de Livros</title>
 
     <!-- Bootstrap core CSS -->
     <link href="<%=request.getContextPath()%>/resources/css/bootstrap.min.css" rel="stylesheet">

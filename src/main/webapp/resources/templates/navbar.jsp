@@ -9,13 +9,13 @@
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#">Leilão de Filmes</a>
+			<a class="navbar-brand" href="#">Leilão de Livros</a>
 		</div>
 		<div id="navbar" class="collapse navbar-collapse">
 			<ul class="nav navbar-nav">
 				<li><a href="<%=request.getContextPath()%>/usuarios/listar">Cadastro
 						de Usuários</a></li>
-				<li><a href="<%=request.getContextPath()%>/livros/pesquisar">Pesquisar
+				<li><a href="<%=request.getContextPath()%>/livro/pesquisar">Pesquisar
 						Livros</a></li>
 				<li><a href="<%=request.getContextPath()%>/lances/inserir">Incluir
 						Lance</a></li>

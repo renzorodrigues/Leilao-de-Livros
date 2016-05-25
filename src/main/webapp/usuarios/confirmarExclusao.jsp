@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Leilão de Filmes</title>
+<title>Leilão de Livros</title>
 
 <!-- Bootstrap core CSS -->
 <link
