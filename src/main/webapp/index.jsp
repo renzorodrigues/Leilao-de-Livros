@@ -20,10 +20,10 @@
     <!-- Begin page content -->
     <div class="container">
       <div class="page-header">
-        <h1>Título da Página</h1>
+        <h1>Mercado do Livro</h1>
       </div>
-      <p class="lead">Texto Grande</p>
-      <p>Texto Menor</p>
+      <p class="lead"><i>Faça o seu cadastro</i></p>
+      <p class="lead"><i>Pesquise os livros disponíveis</i></p>
     </div>
 
 	<jsp:include page="/resources/templates/footer.jsp" />

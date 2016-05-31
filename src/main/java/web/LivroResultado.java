@@ -26,6 +26,6 @@ public class LivroResultado extends HttpServlet {
 		int edicaoMax = Integer.parseInt(request.getParameter("edicaoMax"));
 		List<Livro> itens = lS.buscarPorTituloEdicao(titulo, edicaoMin, edicaoMax);
 		request.setAttribute("itens", itens);
-		request.getRequestDispatcher(DESTINO).forward(request, response);	
+		request.getRequestDispatcher(DESTINO).forward(request, response);
 	}
 }
